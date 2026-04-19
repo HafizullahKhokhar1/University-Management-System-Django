@@ -69,3 +69,8 @@ Use the test credentials you created in your local environment.
 
 This project is proprietary and all rights are reserved by HafizullahKhokhar1.
 See LICENSE for details.
+
+## Contributing
+
+Contributions are welcome under the contribution policy in CONTRIBUTING.md.
+By contributing, you agree that accepted contributions are assigned to HafizullahKhokhar1.
