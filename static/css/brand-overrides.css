@@ -1,0 +1,54 @@
+:root {
+  --ums-primary: #0f3d3e;
+  --ums-accent: #f2a900;
+  --ums-surface: #f7f4ec;
+  --ums-ink: #11232a;
+}
+
+body {
+  background: radial-gradient(circle at 8% 0%, #f3ead4 0%, #f6f2e8 42%, #eceff1 100%);
+  color: var(--ums-ink);
+}
+
+#top-navbar {
+  background: linear-gradient(90deg, #0f3d3e 0%, #1b5f62 100%);
+  border-bottom: 2px solid rgba(242, 169, 0, 0.45);
+}
+
+#top-navbar .form-header .btn {
+  background-color: var(--ums-accent);
+  border-color: var(--ums-accent);
+  color: #111;
+}
+
+#side-nav .top-side {
+  background-blend-mode: multiply;
+  background-color: rgba(15, 61, 62, 0.9);
+}
+
+#side-nav .main-menu ul li.active a {
+  border-left: 4px solid var(--ums-accent);
+  background: rgba(242, 169, 0, 0.1);
+}
+
+.brand-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-label {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f4f8f8;
+}
+
+.card {
+  border-radius: 14px;
+  border: 1px solid rgba(15, 61, 62, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
