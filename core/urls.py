@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import (
+    landing_view,
     home_view,
     post_add,
     edit_post,
@@ -18,8 +19,10 @@ from .views import (
 
 
 urlpatterns = [
-    # Accounts url
-    path("", home_view, name="home"),
+    # Public marketing landing
+    path("", landing_view, name="landing"),
+    # Authenticated portal home
+    path("home/", home_view, name="home"),
     path("add_item/", post_add, name="add_item"),
     path("item/<int:pk>/edit/", edit_post, name="edit_post"),
     path("item/<int:pk>/delete/", delete_post, name="delete_post"),

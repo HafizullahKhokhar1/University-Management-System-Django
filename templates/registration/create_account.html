@@ -1,0 +1,130 @@
+{% extends 'registration/registration_base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Create Account | University Management System' %}{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="register-shell p-4 p-md-5">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+          <div>
+            <h2 class="mb-1">Create Your Account</h2>
+            <p class="text-muted mb-0">Start testing the University Management System as a student user.</p>
+          </div>
+          <a href="{% url 'landing' %}" class="btn btn-outline-secondary">Back To Landing</a>
+        </div>
+
+        {% if form.errors %}
+          <p class="text-danger my-2"><i class="fas fa-exclamation-circle"></i> {% trans 'Please correct the highlighted fields and try again.' %}</p>
+        {% endif %}
+
+        <form action="" method="POST" id="create-account-form">
+          {% csrf_token %}
+          <div class="row g-4">
+            <div class="col-md-6">
+              <label for="username_id" class="form-label">{{ form.username.label }}</label>
+              {{ form.username }}
+              <div id="message-wrapper"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="email_id" class="form-label">{{ form.email.label }}</label>
+              {{ form.email }}
+            </div>
+
+            <div class="col-md-6">
+              <label for="password1_id" class="form-label">{{ form.password1.label }}</label>
+              {{ form.password1 }}
+            </div>
+            <div class="col-md-6">
+              <label for="password2_id" class="form-label">{{ form.password2.label }}</label>
+              {{ form.password2 }}
+            </div>
+
+            <div class="col-md-6">
+              <label for="first_name_id" class="form-label">{{ form.first_name.label }}</label>
+              {{ form.first_name }}
+            </div>
+            <div class="col-md-6">
+              <label for="last_name_id" class="form-label">{{ form.last_name.label }}</label>
+              {{ form.last_name }}
+            </div>
+
+            <div class="col-md-6">
+              <label for="phone_id" class="form-label">{{ form.phone.label }}</label>
+              {{ form.phone }}
+            </div>
+            <div class="col-md-6">
+              <label for="address_id" class="form-label">{{ form.address.label }}</label>
+              {{ form.address }}
+            </div>
+
+            <div class="col-md-4">
+              <label for="gender_id" class="form-label">{{ form.gender.label }}</label>
+              {{ form.gender }}
+            </div>
+            <div class="col-md-4">
+              <label for="level_id" class="form-label">{{ form.level.label }}</label>
+              {{ form.level }}
+            </div>
+            <div class="col-md-4">
+              <label for="program_id" class="form-label">{{ form.program.label }}</label>
+              {{ form.program }}
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+            <button type="submit" class="btn btn-primary" id="create-account-btn">Create Account</button>
+            <span class="text-muted">Already registered? <a href="{% url 'login' %}">Login</a></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .register-shell {
+    background: #ffffff;
+    border: 1px solid #e4e7ec;
+    border-radius: 16px;
+    box-shadow: 0 18px 36px rgba(16, 24, 40, .08);
+  }
+
+  .register-shell input,
+  .register-shell select {
+    border-radius: 10px;
+    min-height: 44px;
+  }
+</style>
+{% endblock content %}
+
+{% block js %}
+<script>
+  const createAccountFormEl = document.getElementById('create-account-form');
+  const createAccountBtnEl = document.getElementById('create-account-btn');
+
+  createAccountFormEl.addEventListener('submit', () => {
+    createAccountBtnEl.innerHTML = 'Creating account...';
+    createAccountBtnEl.classList.add('disabled');
+  });
+
+  $("#username_id").on("input", function () {
+    const username = $(this).val();
+
+    $.ajax({
+      url: "/accounts/ajax/validate-username/",
+      data: { username: username },
+      dataType: 'json',
+      success: function (data) {
+        if (data.is_taken) {
+          $('#message-wrapper').html(`<p class="my-2 text-danger"><span><b>${username}</b> already taken. Try another one.</span></p>`);
+        } else {
+          $('#message-wrapper').html(`<p class="my-2 text-success"><span><b>${username}</b> is available.</span></p>`);
+        }
+      }
+    });
+  });
+</script>
+{% endblock js %}

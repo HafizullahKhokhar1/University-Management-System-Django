@@ -66,6 +66,21 @@ def register(request):
     return render(request, "registration/register.html", {"form": form})
 
 
+def create_account(request):
+    if request.method == "POST":
+        form = StudentAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Account created successfully.")
+            return redirect("login")
+        messages.error(
+            request, "Something is not correct, please fill all fields correctly."
+        )
+    else:
+        form = StudentAddForm()
+    return render(request, "registration/create_account.html", {"form": form})
+
+
 # ########################################################
 # Profile Views
 # ########################################################

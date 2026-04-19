@@ -1,0 +1,111 @@
+{% extends 'registration/registration_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}University Management System | Client Pitch{% endblock title %}
+
+{% block content %}
+<div class="pitch-hero">
+  <div class="pitch-overlay"></div>
+  <div class="container py-5 position-relative">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-7">
+        <p class="small text-uppercase fw-bold mb-2 pitch-kicker">Built by HafizullahKhokhar1</p>
+        <h1 class="display-5 fw-bold mb-3">We Can Add This University LMS/CMS To Your Website</h1>
+        <p class="lead mb-4">
+          University Management System Django helps schools, colleges, and training institutes
+          manage students, staff, courses, exams, results, and payments in one platform.
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+          <a class="btn btn-warning btn-lg" href="{% url 'create_account' %}">Create Account</a>
+          <a class="btn btn-outline-light btn-lg" href="{% url 'login' %}">Client Demo Login</a>
+          <a class="btn btn-light btn-lg" target="_blank" href="https://github.com/HafizullahKhokhar1/University-Management-System-Django">View GitHub</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="pitch-card">
+          <h4 class="mb-3">Why Clients Choose This Project</h4>
+          <ul class="mb-0">
+            <li>Fast setup for schools and institutes</li>
+            <li>Role-based access for Admin, Lecturer, Student</li>
+            <li>Assessment, results, and reporting ready</li>
+            <li>Designed for customization and branding</li>
+            <li>Deployment-ready on Render and Railway</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="feature-tile h-100">
+        <h5>University Operations</h5>
+        <p>Manage admissions, programs, courses, and semester workflows with an admin-first dashboard.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-tile h-100">
+        <h5>Assessment Automation</h5>
+        <p>Track attendance, marks, grades, and publish student-ready result reports with minimal manual work.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-tile h-100">
+        <h5>Client Implementation</h5>
+        <p>We can adapt this LMS/CMS to your current website, domain, and branding requirements.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-5">
+    <h3 class="mb-3">Need this for your institution?</h3>
+    <p class="text-muted mb-4">Create an account for testing or use demo login to explore the platform.</p>
+    <a class="btn btn-dark me-2" href="{% url 'create_account' %}">Start Testing</a>
+    <a class="btn btn-outline-dark" href="{% url 'login' %}">Open Demo</a>
+  </div>
+</div>
+
+<style>
+  .pitch-hero {
+    background: linear-gradient(120deg, #0b273a 0%, #154f6c 42%, #1c7a79 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pitch-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 20%, rgba(255, 220, 90, 0.22), transparent 35%),
+      radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.12), transparent 25%);
+  }
+
+  .pitch-kicker {
+    letter-spacing: .12rem;
+    color: #ffd970;
+  }
+
+  .pitch-card {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 14px;
+    padding: 1.25rem;
+    backdrop-filter: blur(6px);
+  }
+
+  .pitch-card ul {
+    padding-left: 1rem;
+  }
+
+  .feature-tile {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+  }
+</style>
+{% endblock content %}
