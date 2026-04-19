@@ -65,6 +65,29 @@ Use the test credentials you created in your local environment.
 - Configure `ALLOWED_HOSTS` for production
 - Use a production database and secure secret key
 
+## Easy Deployment (Testing)
+
+You can deploy this project quickly for testing on Render or Railway.
+
+### Option 1: Render (Fastest)
+
+1. Push code to GitHub (already done).
+2. In Render, create a new Web Service from this repository.
+3. Render will detect `render.yaml` automatically.
+4. Deploy and open the generated URL.
+
+### Option 2: Railway
+
+1. Create a new Railway project from your GitHub repository.
+2. Set start command to: `gunicorn config.wsgi:application`
+3. Set build command to: `pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput`
+4. Add env vars: `DEBUG=False`, `SECRET_KEY`, `ALLOWED_HOSTS`, `CSRF_TRUSTED_ORIGINS`.
+
+### Notes
+
+- `Procfile` and `runtime.txt` are included for platform compatibility.
+- Current default DB is SQLite, fine for testing but not recommended for production.
+
 ## License
 
 This project is proprietary and all rights are reserved by HafizullahKhokhar1.
